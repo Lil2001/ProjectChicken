@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         borderColor: '#333333',
         borderBottomWidth: 3,
 
-
     },
     signUpText: {
         textAlign: 'center',
@@ -138,7 +137,6 @@ const styles = StyleSheet.create({
     price: {
         textAlign: 'center',
         marginTop: 20,
-
         fontSize: 18,
         color: '#333333',
         lineHeight: 22

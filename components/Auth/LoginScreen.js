@@ -36,10 +36,11 @@ export default function LoginScreenComponent({ navigation }) {
     async function setStorage(userToken, email, callback) {
         await AsyncStorage.setItem("email", `${email}`)
         await AsyncStorage.setItem('userToken', `${userToken}`)
+
         callback();
     }
 
-
+    // AsyncStorage.removeItem('userToken')
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground

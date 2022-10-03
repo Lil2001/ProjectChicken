@@ -47,8 +47,6 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
     }, [setAppState])
 
 
-    // const productivity = new Array(prod)
-    // console.log(productivity.length)
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >

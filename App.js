@@ -155,7 +155,7 @@ export default function App() {
               headerShown: false,
             })}>
             <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
-            <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
+            {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
             {/* <Stack.Screen name="AuthScreen" component={AuthScreenComponent} />
             <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
             <Stack.Screen name="HensScreen" component={HensScreenComponent} />
@@ -188,7 +188,7 @@ export default function App() {
               {/* <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
               <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
               <Stack.Screen name="AuthScreen" component={AuthScreenComponent} /> */}
-              {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
+              <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
               <Stack.Screen name="HensScreen" component={HensScreenComponent} />
               <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
               <Stack.Screen name="MarketScreen" component={MarketScreenComponent} />
