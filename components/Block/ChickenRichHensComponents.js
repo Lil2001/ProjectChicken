@@ -1,16 +1,10 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_300Light } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
-
-
 
 export default function ChickenRichHensComponent({ imageFirst, imageSecond, name, price, navigation, e, chickensId }) {
     const goToPage = (e) => {
         navigation.navigate(e, { chickensId })
     }
-
-
     return (
         <TouchableOpacity
             onPress={() => goToPage(e)}
@@ -21,13 +15,10 @@ export default function ChickenRichHensComponent({ imageFirst, imageSecond, name
             <View style={styles.imgBlock} >
                 <Image
                     style={{ width: 95, height: 130 }}
-                    // source={}
-                    // source={imageFirst}
                     source={{ uri: `https://api.richhens.com/${imageFirst}` }}
                 />
                 <Image
                     style={{ width: 26, height: 24, position: 'absolute', right: -25 }}
-                    // source={}
                     source={imageSecond}
                 />
             </View>

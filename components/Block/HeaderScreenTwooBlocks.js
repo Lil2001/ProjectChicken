@@ -6,7 +6,6 @@ import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inte
 
 export default function HeaderScreenTwoBlockComponent({ navigation, linkFirst, linkSecond }) {
     const [modalVisible, setModalVisible] = useState(false);
-
     let navigationData = [
         { id: 1, name: 'HENS', link: 'HensScreen' },
         { id: 2, name: 'ROOSTERS', link: 'RichScreen' },
@@ -17,6 +16,8 @@ export default function HeaderScreenTwoBlockComponent({ navigation, linkFirst, l
     const goToPages = (e) => {
         navigation.navigate(e)
     }
+
+
 
     return (
         <SafeAreaView>
@@ -50,7 +51,6 @@ export default function HeaderScreenTwoBlockComponent({ navigation, linkFirst, l
                             <Text style={styles.usserText} >User</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() => navigation.navigate('TransactionPageScreen')}
                         style={styles.usserTwo} >

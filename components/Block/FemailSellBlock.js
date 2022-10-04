@@ -1,9 +1,5 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
-import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
-
 
 let data = [
     { id: 1, img: require('../../assets/images/Frame22.png') },
@@ -11,7 +7,6 @@ let data = [
     { id: 3, img: require('../../assets/images/Frame22.png') },
     { id: 4, img: require('../../assets/images/Frame22.png') }
 ]
-
 
 let staticData = [
     { id: 2, name: 'QUANTITY', price: '', count: 10, backgroundColor: '#FFC700', value: 35 },

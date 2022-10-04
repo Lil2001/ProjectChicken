@@ -2,38 +2,18 @@ import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimension
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-let data = [
-    { id: 1, img: require('../../assets/images/Frame22.png') },
-    { id: 2, img: require('../../assets/images/Frame22.png') },
-    { id: 3, img: require('../../assets/images/Frame22.png') },
-    { id: 4, img: require('../../assets/images/Frame22.png') }
-]
-
-
-let staticData = [
-    { id: 1, name: 'HELTH', price: '%', count: 50, backgroundColor: '#FF533E', value: 50 },
-]
-
-let valTwo = [
-    1, 2, 3, 4, 5, 6, 7
-]
-
 let buttonsData = ['FEED', 'BREED', 'SELL']
 
 export default function RichBlockScreenComponent({ image, id, chickenId }) {
-    let [value, setValue] = useState(0)
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null });
+    const [health, setHealth] = useState(0);
+    const [prod, setProd] = useState(0)
+    const [rooster, setRooster] = useState([])
 
-    console.log(chickenId, 'id ')
-    
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
         let AuthStr = 'Bearer ' + userToken;
-        let id = chickenId
+        let id = chickenId;
         await fetch(`https://api.richhens.com/api/v1/farm/roosters/${id}`, {
             method: 'GET',
             headers: {
@@ -42,7 +22,11 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
             },
         })
             .then(response => response.json())
-            .then(res => { console.log(res) })
+            .then(res => {
+                setRooster(res.data.rooster)
+                setHealth(res.data.rooster.health)
+                setProd(res.data.rooster.productivity)
+            })
     }
 
 
@@ -51,48 +35,35 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
         getChickensData()
     }, [setAppState])
 
+    console.log(rooster, 'rooster')
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
                 <Text style={styles.containerIdText}>{id}</Text>
             </View>
             <Image
-                style={{ width: 168, height: 200, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
-                source={image}
+                style={{ width: 168, height: 230, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
+                source={{ uri: `https://api.richhens.com/${rooster.picture}` }}
             />
             <Text style={{ fontSize: 14, fontFamily: 'Inter_500Medium', textAlign: 'center', marginTop: 5, marginBottom: 10 }}>PREMIUM</Text>
             <View style={styles.blockDiv}>
-                {data.map((res, index) => {
-                    return (
-                        <Image
-                            style={styles.blockDivImg}
-                            key={index}
-                            source={res.img}
-                        />
-                    )
-                })}
+                {
+                    [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
+                }
             </View>
-            {staticData.map((res, index) => {
-                return (
-                    <View
-                        key={index}
-                        style={styles.progressParrent}>
-                        <Text style={styles.progressText}>{res.name} {res.count}{res.price}</Text>
-                        <View style={styles.progress}>
-                            <View style={[styles.value, { width: res.value + '%', backgroundColor: res.backgroundColor }]}></View>
-                        </View>
-                    </View>
-                )
-            })}
             <View style={styles.progressParrent}>
-                <Text style={styles.progressText}>PRODUCTIVITY 8</Text>
+                <Text style={styles.progressText}>HEALTH {rooster.health}%</Text>
+                <View style={styles.progress}>
+                    <View style={[styles.value, { width: 100 + '%', backgroundColor: '#FF533E' }]}></View>
+                </View>
+            </View>
+
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>PRODUCTIVITY {rooster.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
                     {
-                        valTwo.map((item, index) => {
-                            return (
-                                <View key={index} style={[{ width: 10 + '%', backgroundColor: '#00E755', marginRight: 2 }, index === 0 ? styles.bordersRadius : styles.bordersNone]}></View>
-                            )
-                        })
+                        [...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
                     }
                 </View>
             </View>

@@ -10,12 +10,9 @@ import HeaderScreenTwoBlockComponent from '../Block/HeaderScreenTwooBlocks';
 
 export default function OtherScreenComponent({ navigation }) {
 
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null });
     const [data, setData] = useState([])
-    
+
     // Get request for Chickens data
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
@@ -38,7 +35,7 @@ export default function OtherScreenComponent({ navigation }) {
     }, [setAppState])
 
     console.log(data, 'eggs data ')
-    
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -52,7 +49,7 @@ export default function OtherScreenComponent({ navigation }) {
                 source={require('../../assets/images/image2.png')}>
                 <ScrollView>
                     <View style={styles.block}>
-                    {
+                        {
                             data.map((value, index) => {
                                 return (
                                     <ChickenRichHensComponent
@@ -62,6 +59,7 @@ export default function OtherScreenComponent({ navigation }) {
                                         name={value.type}
                                         price={'BREAK'}
                                         e={'SingleChickenScreen'}
+                                        chickensId={value.id}
                                     />
                                 )
                             })

@@ -6,10 +6,7 @@ let buttonsData = ['FEED', 'BREED', 'SELL']
 
 export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
     let [value, setValue] = useState(0)
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null });
     const [health, setHealth] = useState(0)
     const [quantity, setQuantity] = useState(0)
     const [quality, setQuality] = useState(0)
@@ -60,15 +57,9 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
             />
 
             <View style={styles.blockDiv}>
-                {data.map((res, index) => {
-                    return (
-                        <Image
-                            style={styles.blockDivImg}
-                            key={index}
-                            source={res.img}
-                        />
-                    )
-                })}
+                {
+                    [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
+                }
             </View>
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>HEALTH {chicken.health}%</Text>
@@ -94,7 +85,7 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 <Text style={styles.progressText}>PRODUCTIVITY {chicken.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
                     {
-                        [...new Array(prod)].map((x, i) => <View key={i - 1} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
+                        [...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
                     }
                 </View>
             </View>

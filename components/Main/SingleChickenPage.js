@@ -28,6 +28,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
     const route = useRoute()
     // console.log(route.params.chickensId, 'sss')
     let chickenId = route.params.chickensId
+    
 
     return (
         <SafeAreaView style={styles.container}>
@@ -103,6 +104,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
                     <OtherScreenBlock
                         id={'#451790238'}
                         image={require('../../assets/images/egg3.png')}
+                        chickenId={chickenId}
                     />
                 }
                 {prevRoute.name === 'RichMarketBuyScreen' &&
@@ -158,7 +160,6 @@ const styles = StyleSheet.create(
         backImage: {
             width: '100%',
             height: '100%',
-
         },
         navDivFirst: {
             flexDirection: 'row',

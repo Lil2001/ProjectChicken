@@ -10,11 +10,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function HensScreenComponent({ navigation, name }) {
 
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null });
     const [data, setData] = useState([])
+
     // Get request for Chickens data
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
@@ -32,14 +30,6 @@ export default function HensScreenComponent({ navigation, name }) {
                 setData(res.data.chickens)
             })
     }
-
-
-    // AsyncStorage
-    // async function setStorage( callback) {
-
-    //     callback();
-    // }
-
 
     // useEffect for uploading in every time when i go to that page
     useEffect(() => {

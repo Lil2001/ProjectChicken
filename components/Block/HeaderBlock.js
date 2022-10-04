@@ -1,8 +1,7 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
 
-export default function HeaderBlock({navigation}) {
+export default function HeaderBlock({ navigation }) {
     return (
         <View style={styles.navDivFirst}>
             <TouchableOpacity

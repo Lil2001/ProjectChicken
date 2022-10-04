@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Modal } from 'react-native';
 import React, { useState } from 'react';
 import Svg, { Path, Rect } from "react-native-svg"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -7,10 +7,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function LoginScreenComponent({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [modalVisible, setModalVisible] = useState(false)
 
-    // const goToAuthScreenPage = () => {
-    //     navigation.navigate('AuthScreen')
-    // }
     const goToRegisterPage = () => {
         navigation.navigate('RegisterScreen')
     }
@@ -24,11 +22,15 @@ export default function LoginScreenComponent({ navigation }) {
         await fetch('https://api.richhens.com/api/v1/login_check', requestOptions)
             .then(response => response.json())
             .then(res => {
-                console.log(res, 'res')
-                let userToken = res.data.token
-                setStorage(userToken, email, function () {
-                    navigation.navigate('HensScreen')
-                })
+                console.log(res.status, 'res')
+                if (res.status === 'success') {
+                    let userToken = res.data.token
+                    setStorage(userToken, email, function () {
+                        navigation.navigate('HensScreen')
+                    })
+                } else {
+                    setModalVisible(!modalVisible)
+                }
             }
             )
     }
@@ -42,6 +44,24 @@ export default function LoginScreenComponent({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+            >
+                <StatusBar backgroundColor="white" />
+                <View style={styles.modalDiv}>
+                    <View style={styles.modalDivBlock}>
+                        <Text style={styles.modalDivText}>Incorrect Email address or password.</Text>
+                        <TouchableOpacity
+                            onPress={() => setModalVisible(!modalVisible)}
+                            style={styles.signUpButton} >
+                            <Text style={styles.signUpText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+            </Modal>
             <ImageBackground
                 style={styles.image}
                 source={require('../../assets/images/image2.png')}
@@ -196,5 +216,28 @@ const styles = StyleSheet.create({
         bottom: -1,
         right: 0,
         width: 80
+    },
+    modalDiv: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#333333',
+        opacity: 0.9,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    modalDivBlock: {
+        width: '85%',
+        height: 185,
+        padding: 10,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15
+    },
+    modalDivText: {
+        fontSize: 13,
+        lineHeight: 16,
+        fontFamily: 'Inter_400Regular',
+        color: '#272727',
     }
 })

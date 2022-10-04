@@ -1,6 +1,5 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 import { useRoute } from '@react-navigation/native';
 
 let navigationFooterData = [
@@ -9,7 +8,6 @@ let navigationFooterData = [
     { id: 3, name: 'SOCIAL', image: require('../../assets/images/imgfooter3.png'), link: '' },
     { id: 4, name: 'MARKET', image: require('../../assets/images/imgfooter4.png'), link: 'MarketScreen' },
 ]
-
 
 export default function FooterScreenComponent({ state, descriptors, navigation }) {
     let [active, setActive] = useState(0)

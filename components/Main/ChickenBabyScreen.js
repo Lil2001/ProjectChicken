@@ -9,10 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ChickenBabyScreenComponent({ navigation }) {
 
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null });
     const [data, setData] = useState([])
     // Get request for Chickens data
     async function getChickensData() {
@@ -60,9 +57,7 @@ export default function ChickenBabyScreenComponent({ navigation }) {
                                 )
                             })
                         }
-                        <AddChickenComponent
-                            name={'BREED CHICK'}
-                        />
+                        <AddChickenComponent name={'BREED CHICK'} />
                     </View>
                 </ScrollView>
             </ImageBackground>

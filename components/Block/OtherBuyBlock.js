@@ -1,12 +1,11 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_300Light } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
-
 
 let buttonsData = ['BUY NOW']
 
 export default function OtherBuyBlock({ id, image, navigation }) {
+    g
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -19,6 +18,7 @@ export default function OtherBuyBlock({ id, image, navigation }) {
                 <Text>ECO EGG</Text>
             </View>
             <Text style={styles.price}>4.38 BNB</Text>
+
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 25, paddingLeft: 15, paddingRight: 15, marginBottom: 25 }}>
                 {buttonsData.map((res, index) => {
                     return (

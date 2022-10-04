@@ -8,26 +8,10 @@ export default function HeaderScreenComponent({ navigation }) {
     const [changeNav, setChangeNav] = useState(0)
 
     let navigationData = [
-        {
-            id: 1,
-            name: 'HENS',
-            link: 'HensScreen'
-        },
-        {
-            id: 2,
-            name: 'ROOSTERS',
-            link: 'RichScreen'
-        },
-        {
-            id: 3,
-            name: 'CHICKS',
-            link: 'ChickenBabyScreen'
-        },
-        {
-            id: 4,
-            name: 'OTHER',
-            link: 'OtherScreen'
-        },
+        { id: 1, name: 'HENS', link: 'HensScreen' },
+        { id: 2, name: 'ROOSTERS', link: 'RichScreen' },
+        { id: 3, name: 'CHICKS', link: 'ChickenBabyScreen' },
+        { id: 4, name: 'OTHER', link: 'OtherScreen' },
     ]
     const route = useRoute();
 

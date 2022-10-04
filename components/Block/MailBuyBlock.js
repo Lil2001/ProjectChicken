@@ -6,27 +6,13 @@ import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inte
 
 
 let data = [
-    {
-        id: 1,
-        img: require('../../assets/images/Frame22.png')
-    },
-    {
-        id: 2,
-        img: require('../../assets/images/Frame22.png')
-    },
-    {
-        id: 3,
-        img: require('../../assets/images/Frame22.png')
-    },
-    {
-        id: 4,
-        img: require('../../assets/images/Frame22.png')
-    }
+    {id: 1,img: require('../../assets/images/Frame22.png')},
+    {id: 2, img: require('../../assets/images/Frame22.png')},
+    {id: 3,img: require('../../assets/images/Frame22.png')},
+    {id: 4,img: require('../../assets/images/Frame22.png')}
 ]
 
-let valTwo = [
-    1, 2, 3, 4, 5, 6, 7
-]
+let valTwo = [1, 2, 3, 4, 5, 6, 7]
 
 let buttonsData = ['Buy Now']
 
@@ -83,6 +69,7 @@ export default function MailByBlock({ image, id }) {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {

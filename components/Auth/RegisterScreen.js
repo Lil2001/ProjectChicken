@@ -78,7 +78,7 @@ export default function RegisterScreenComponent({ navigation }) {
         await AsyncStorage.setItem('refreshToken', `${refreshToken}`)
         callback();
     }
-
+    
     return (
         <SafeAreaView style={styles.container}>
             <Modal
@@ -103,6 +103,7 @@ export default function RegisterScreenComponent({ navigation }) {
                 source={require('../../assets/images/image2.png')}
                 resizeMode="cover"
             >
+                
                 <View style={styles.block}>
                     <Image
                         style={styles.blockImage}

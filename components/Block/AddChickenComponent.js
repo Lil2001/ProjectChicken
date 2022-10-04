@@ -1,7 +1,5 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 
 export default function AddChickenComponent({ navigation, name }) {
     return (
@@ -10,11 +8,7 @@ export default function AddChickenComponent({ navigation, name }) {
                 style={{ width: 55, height: 55 }}
                 source={require('../../assets/images/plus.png')}
             />
-            <Text
-                style={styles.addBlockText}
-            >
-                {name}
-            </Text>
+            <Text style={styles.addBlockText}>{name}</Text>
         </TouchableOpacity>
     )
 }

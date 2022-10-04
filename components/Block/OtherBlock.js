@@ -1,26 +1,49 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_300Light } from '@expo-google-fonts/inter';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Svg, { Path, Rect } from "react-native-svg"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 let buttonsData = ['BREAK', 'SELL']
 
-export default function OtherScreenBlock({ id, image, navigation }) {
+export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
+    const [appState, setAppState] = useState({ loading: false, repos: null })
+    const [eggs, setEggs] = useState([])
+
+    async function getChickensData() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        let id = chickenId;
+        await fetch(`https://api.richhens.com/api/v1/farm/eggs/${id}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': AuthStr,
+                "content-type": "application/json",
+            },
+        })
+            .then(response => response.json())
+            .then(res =>  setEggs(res.data.egg))
+    }
+
+    useEffect(() => {
+        setAppState({ loading: true });
+        getChickensData()
+    }, [setAppState])
+ 
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
                 <Text style={styles.containerIdText}>{id}</Text>
             </View>
             <Image
-                style={{ width: 158, height: 170, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
-                source={image}
+                style={{ width: 158, height: 230, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
+                source={{ uri: `https://api.richhens.com/${eggs.picture}` }}
             />
-
             <View style={styles.blockDiv}>
-                <Text>ECO EGG</Text>
+                <Text>{eggs.type}</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 25, paddingLeft: 15, paddingRight: 15, marginBottom:25 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 25, paddingLeft: 15, paddingRight: 15, marginBottom: 25 }}>
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
@@ -29,6 +52,7 @@ export default function OtherScreenBlock({ id, image, navigation }) {
                             <Text style={styles.signUpText}>{res}</Text>
                         </TouchableOpacity>
                     )
+
                 })}
             </View>
         </View>
@@ -110,8 +134,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: '#333333',
         borderBottomWidth: 3,
-
-
     },
     signUpText: {
         textAlign: 'center',
@@ -119,21 +141,6 @@ const styles = StyleSheet.create({
         lineHeight: 16,
         fontFamily: 'Inter_600SemiBold',
         color: '#333333',
-    },
-    timeBlock: {
-        width: 110,
-        height: 36,
-        backgroundColor: '#EAEAEA',
-        borderRadius: 17,
-        marginTop: 10,
-        justifyContent: 'center'
-    },
-    timeBlock_text: {
-        fontSize: 18,
-        lineHeight: 22,
-        textAlign: 'center',
-        fontFamily: 'Inter_300Light',
-        color: '#333333'
     },
     price: {
         textAlign: 'center',

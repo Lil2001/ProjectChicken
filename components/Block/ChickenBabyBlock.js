@@ -1,12 +1,9 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_300Light } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
+
 
 let staticData = [{id: 1,name: 'HELTH',price: '%',count: 50,backgroundColor: '#FF533E',value: 50},]
 let buttonsData = ['FEED']
-
-
 
 export default function ChickenBabyBlock({ image, id }) {
 
