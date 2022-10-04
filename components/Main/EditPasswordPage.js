@@ -1,6 +1,16 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import Svg, { Path, Rect } from "react-native-svg"
+import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function EditPasswordPageScreenComponent({ navigation }) {
+    const [password, setPassword] = useState('')
+    const [currentPassword, setCurrentPassword] = useState('')
+    const [appState, setAppState] = useState({ loading: true, repos: null })
+
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.main}>
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
         borderColor: '#4F4F4F',
         borderRadius: 25,
         paddingLeft: 20,
-        fontStyle:'italic'
+        fontStyle: 'italic'
     },
     signUpButton: {
         width: '50%',

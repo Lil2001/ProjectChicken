@@ -156,7 +156,30 @@ export default function App() {
             })}>
             <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
             {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
+<<<<<<< HEAD
             
+=======
+            {/* <Stack.Screen name="AuthScreen" component={AuthScreenComponent} />
+            <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
+            <Stack.Screen name="HensScreen" component={HensScreenComponent} />
+            <Stack.Screen name="MarketScreen" component={MarketScreenComponent} />
+            <Stack.Screen name="ChickenBabyScreen" component={ChickenBabyScreenComponent} />
+            <Stack.Screen name="ChickenBabyMarketScreen" component={ChickenBabysMarketScreenComponent} />
+            <Stack.Screen name="OtherScreen" component={OtherScreenComponent} />
+            <Stack.Screen name="RichScreenMarket" component={RichHensScreenMarketComponent} />
+            <Stack.Screen name="TimelineScreen" component={TimeLineScreenComponent} />
+            <Stack.Screen name="UserProfileScreen" component={UserProfileScreenComponent} />
+            <Stack.Screen name="UserProfileEditingScreen" component={UserProfileEditingScreenComponent} />
+            <Stack.Screen name="EditNamePageScreen" component={EditNamePageScreenComponent} />
+            <Stack.Screen name="EditPasswordPageScreen" component={EditPasswordPageScreenComponent} />
+            <Stack.Screen name="TransactionPageScreen" component={TransactionPageScreenComponent} />
+            <Stack.Screen name="SingleChickenScreen" component={SingleChickenScreenComponent} />
+            <Stack.Screen name='MarketBuyScreen' component={MarketBuyScreenComponent} />
+            <Stack.Screen name='RichMarketBuyScreen' component={RichMarketBuyScreenComponent} />
+            <Stack.Screen name='ChickenBabyBuyScreen' component={ChickenBabyBuyScreenComponent} />
+            <Stack.Screen name='OtherSellScreen' component={OtherSellScreenComponent} />
+            <Stack.Screen name='OtherBuyScreen' component={OtherBuyScreenComponent} /> */}
+>>>>>>> 8694c093d5c53efba3e8aa3e9305aac51a6003c6
           </Stack.Navigator>
           )
           :

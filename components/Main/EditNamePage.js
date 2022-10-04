@@ -1,6 +1,30 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { useEffect, useState } from 'react';
+import Svg, { Path, Rect } from "react-native-svg"
+import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function EditNamePageScreenComponent({ navigation }) {
+    const [name, setName] = useState('')
+    const [appState, setAppState] = useState({ loading: false, repos: null })
+    async function getNickName() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        fetch('https://api.richhens.com/api/v1/user/nick', {
+            method: 'PATCH',
+            body: JSON.stringify({ nick: 'name' }),
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': AuthStr,
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    }
+
+
+
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.main}>
@@ -17,8 +41,13 @@ export default function EditNamePageScreenComponent({ navigation }) {
                     style={styles.input}
                     placeholder={'User Hen'}
                     placeholderTextColor={'#383838'}
+                    value={name}
+                    onChange={(text) => setName(text)}
+
                 />
-                <TouchableOpacity style={styles.signUpButton} >
+                <TouchableOpacity
+                    onPress={() => getNickName()}
+                    style={styles.signUpButton} >
                     <Text style={styles.signUpText}>SAVE</Text>
                 </TouchableOpacity>
             </View>
@@ -37,7 +66,7 @@ const styles = StyleSheet.create({
         padding: 25,
         position: 'relative',
         width: '100%',
-        height:'100%'
+        height: '100%'
     },
     blockHeader: {
         flexDirection: 'row',

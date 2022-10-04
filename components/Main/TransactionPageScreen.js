@@ -14,29 +14,7 @@ export default function TransactionPageScreenComponent({ navigation }) {
     const [balance, setBalance] = useState([])
     const routes = navigation.getState()?.routes;
     const prevRoute = routes[routes.length - 2];
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
 
-    async function getBalanceData() {
-        let userToken = await AsyncStorage.getItem('userToken');
-        let AuthStr = 'Bearer ' + userToken;
-        await fetch('https://api.richhens.com/api/v1/user/balance', {
-            method: 'GET',
-            headers: {
-                'Authorization': AuthStr,
-                "content-type": "application/json",
-            },
-        })
-            .then(response => response.json())
-            .then(res => { console.log(res) })
-    }
-
-    useEffect(() => {
-        setAppState({ loading: true });
-        getBalanceData()
-    }, [setAppState])
 
 
     return (
