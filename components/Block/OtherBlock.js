@@ -31,6 +31,7 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
         getChickensData()
     }, [setAppState])
  
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -134,10 +135,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: '#333333',
         borderBottomWidth: 3,
-<<<<<<< HEAD
-=======
-
->>>>>>> 8694c093d5c53efba3e8aa3e9305aac51a6003c6
     },
     signUpText: {
         textAlign: 'center',

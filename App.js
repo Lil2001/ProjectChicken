@@ -156,9 +156,6 @@ export default function App() {
             })}>
             <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
             {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
-<<<<<<< HEAD
-            
-=======
             {/* <Stack.Screen name="AuthScreen" component={AuthScreenComponent} />
             <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
             <Stack.Screen name="HensScreen" component={HensScreenComponent} />
@@ -179,7 +176,6 @@ export default function App() {
             <Stack.Screen name='ChickenBabyBuyScreen' component={ChickenBabyBuyScreenComponent} />
             <Stack.Screen name='OtherSellScreen' component={OtherSellScreenComponent} />
             <Stack.Screen name='OtherBuyScreen' component={OtherBuyScreenComponent} /> */}
->>>>>>> 8694c093d5c53efba3e8aa3e9305aac51a6003c6
           </Stack.Navigator>
           )
           :

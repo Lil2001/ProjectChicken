@@ -31,7 +31,6 @@ export default function HeaderScreenComponent({ navigation }) {
                             <Text style={styles.usserText}>User</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() => navigation.navigate('TransactionPageScreen')}
                         style={styles.usserTwo} >

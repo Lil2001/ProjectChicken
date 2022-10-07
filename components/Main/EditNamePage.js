@@ -6,13 +6,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function EditNamePageScreenComponent({ navigation }) {
     const [name, setName] = useState('')
-    const [appState, setAppState] = useState({ loading: false, repos: null })
+
     async function getNickName() {
         let userToken = await AsyncStorage.getItem('userToken');
         let AuthStr = 'Bearer ' + userToken;
-        fetch('https://api.richhens.com/api/v1/user/nick', {
+        await fetch('https://api.richhens.com/api/v1/user/nick', {
             method: 'PATCH',
-            body: JSON.stringify({ nick: 'name' }),
+            body: JSON.stringify({ nick: name }),
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': AuthStr,
@@ -42,7 +42,7 @@ export default function EditNamePageScreenComponent({ navigation }) {
                     placeholder={'User Hen'}
                     placeholderTextColor={'#383838'}
                     value={name}
-                    onChange={(text) => setName(text)}
+                    onChangeText={(text) => setName(text)}
 
                 />
                 <TouchableOpacity

@@ -11,6 +11,8 @@ export default function ChickenBabyScreenComponent({ navigation }) {
 
     const [appState, setAppState] = useState({ loading: false, repos: null });
     const [data, setData] = useState([])
+    const [health, setHealth] = useState(0)
+
     // Get request for Chickens data
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
@@ -23,10 +25,17 @@ export default function ChickenBabyScreenComponent({ navigation }) {
             },
         })
             .then(response => response.json())
-            .then(res => { setData(res.data.chicks) })
+            .then(res => {
+                setData(res.data.chicks)
+                setHealth(res.data.chicks.health)
+            })
     }
 
+
+
+
     // useEffect for uploading in every time when  go to that page
+
     useEffect(() => {
         setAppState({ loading: true });
         getChickensData()
@@ -53,6 +62,7 @@ export default function ChickenBabyScreenComponent({ navigation }) {
                                         name={'PREMIUM  PR 10'}
                                         price={'FEED'}
                                         e={'SingleChickenScreen'}
+                                        chickensId={value.id}
                                     />
                                 )
                             })

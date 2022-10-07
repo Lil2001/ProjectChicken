@@ -28,7 +28,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
     const route = useRoute()
     // console.log(route.params.chickensId, 'sss')
     let chickenId = route.params.chickensId
-    
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -81,6 +81,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
                         <ChickenBabyBlock
                             id={'#451790238'}
                             image={require('../../assets/images/chickenbaby1.png')}
+                            chickenId={chickenId}
                         />
                         <View style={styles.box}>
                             <Text style={styles.box_nameText}>BREEDED FROM</Text>

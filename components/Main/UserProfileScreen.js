@@ -2,7 +2,6 @@ import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimension
 import { useEffect, useState } from 'react';
 import Svg, { Path, Rect } from "react-native-svg"
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function UserProfileScreenComponent({ navigation }) {
@@ -28,9 +27,7 @@ export default function UserProfileScreenComponent({ navigation }) {
             },
         })
             .then(response => response.json())
-            .then(res => {
-                setData(res.data.user)
-            })
+            .then(res => {setData(res.data.user)})
     }
 
     useEffect(() => {
@@ -38,7 +35,6 @@ export default function UserProfileScreenComponent({ navigation }) {
         getUserData()
     }, [setAppState])
 
-    console.log(data, 'data')
     return (
         <SafeAreaView style={styles.container}>
             <LinearGradient

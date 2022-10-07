@@ -28,7 +28,7 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
         })
             .then(response => response.json())
             .then(res => {
-                console.log(res.data.chicken)
+                console.log(res.data.chicken, 'chickens')
                 setChicken(res.data.chicken)
                 setHealth(res.data.chicken.health)
                 setQuantity(res.data.chicken.quantity)
@@ -36,6 +36,24 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 setProd(res.data.chicken.productivity)
             })
     }
+
+
+    // Feed Chickens
+    async function putFeedChickens() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        let id = chickenId;
+        await fetch(`https://api.richhens.com/api/v1/farm/chickens/${id}/feed`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': AuthStr,
+                "content-type": "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then(res => { console.log(res, 'feed') })
+    }
+
 
 
     useEffect(() => {
@@ -78,7 +96,6 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 </View>
             </View>
 
-
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>PRODUCTIVITY {chicken.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
@@ -91,6 +108,11 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
+                            onPress={() => {
+                                if (index === 0) {
+                                    putFeedChickens()
+                                }
+                            }}
                             key={index}
                             style={styles.signUpButton} >
                             <Text style={styles.signUpText}>{res}</Text>

@@ -70,18 +70,7 @@ export default function FemSellBlock({ image, id }) {
             <TextInput
                 placeholder='Input Price in BNB'
                 keyboardType='numeric'
-                style={{
-                    width: '80%',
-                    backgroundColor: '#F3F3F3',
-                    borderWidth: 1,
-                    borderColor: '#515051',
-                    borderRadius: 20,
-                    padding: 5,
-                    textAlign: 'center',
-                    fontStyle: 'italic',
-                    alignSelf: 'center',
-                    marginTop: 15
-                }}
+                style={styles.input}
             />
 
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 25, paddingLeft: 15, paddingRight: 15, marginBottom: 20 }}>
@@ -192,5 +181,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#333333',
         lineHeight: 22
+    },
+    input :{
+        width: '80%',
+        backgroundColor: '#F3F3F3',
+        borderWidth: 1,
+        borderColor: '#515051',
+        borderRadius: 20,
+        padding: 5,
+        textAlign: 'center',
+        fontStyle: 'italic',
+        alignSelf: 'center',
+        marginTop: 15
     }
 })

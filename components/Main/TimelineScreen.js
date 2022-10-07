@@ -1,78 +1,18 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 import FooterScreenComponent from '../Block/FooterScreen';
 
 
 let data = [
-    {
-        id: 1,
-        text: ' Your hen laid an egg! You have 00:25 sec to take it',
-        idText: ' #485423520',
-        image: require('../../assets/images/smileIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 2,
-        text: ' Your hen’s egg has been stolen.',
-        idText: ' #485423520',
-        image: require('../../assets/images/sadIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 3,
-        text: ' Your chick has died of starvation',
-        idText: ' CH48546655',
-        image: require('../../assets/images/sadIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 4,
-        text: ' Your chick has become a hen',
-        idText: '#485423520',
-        image: require('../../assets/images/smileIcon.png'),
-        name: ' CH48546655',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 5,
-        text: ' Low rooster health level. Feed it immediately!',
-        idText: ' #485423520',
-        image: require('../../assets/images/warningIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 6,
-        text: ' Your hen has been sold.',
-        idText: ' #485423520',
-        image: require('../../assets/images/smileIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 7,
-        text: ' Your hen laid an egg! You have 00:15 sec to take it.',
-        idText: ' #485423520',
-        image: require('../../assets/images/smileIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    },
-    {
-        id: 8,
-        text: ' Your got 2.45 HEN from the egg.',
-        idText: ' #485423520',
-        image: require('../../assets/images/smileIcon.png'),
-        name: '',
-        time: '22 Sept 15:00:00'
-    }
+    { id: 1, text: ' Your hen laid an egg! You have 00:25 sec to take it', idText: ' #485423520', image: require('../../assets/images/smileIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 2, text: ' Your hen’s egg has been stolen.', idText: ' #485423520', image: require('../../assets/images/sadIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 3, text: ' Your chick has died of starvation', idText: ' CH48546655', image: require('../../assets/images/sadIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 4, text: ' Your chick has become a hen', idText: '#485423520', image: require('../../assets/images/smileIcon.png'), name: ' CH48546655', time: '22 Sept 15:00:00' },
+    { id: 5, text: ' Low rooster health level. Feed it immediately!', idText: ' #485423520', image: require('../../assets/images/warningIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 6, text: ' Your hen has been sold.', idText: ' #485423520', image: require('../../assets/images/smileIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 7, text: ' Your hen laid an egg! You have 00:15 sec to take it.', idText: ' #485423520', image: require('../../assets/images/smileIcon.png'), name: '', time: '22 Sept 15:00:00' },
+    { id: 8, text: ' Your got 2.45 HEN from the egg.', idText: ' #485423520', image: require('../../assets/images/smileIcon.png'), name: '', time: '22 Sept 15:00:00' }
 ]
-
-
 
 export default function TimeLineScreenComponent({ navigation }) {
     return (

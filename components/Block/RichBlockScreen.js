@@ -10,6 +10,8 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
     const [prod, setProd] = useState(0)
     const [rooster, setRooster] = useState([])
 
+
+    // Get Roosters Data
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
         let AuthStr = 'Bearer ' + userToken;
@@ -27,6 +29,22 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                 setHealth(res.data.rooster.health)
                 setProd(res.data.rooster.productivity)
             })
+    }
+
+    // Feed Roosters
+    async function putFeedRoosters() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        let id = chickenId;
+        await fetch(`https://api.richhens.com/api/v1/farm/roosters/${id}/feed`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': AuthStr,
+                "content-type": "application/json",
+            },
+        })
+            .then(response => response.json())
+            .then(res => { console.log(res, 'feed') })
     }
 
 
@@ -55,7 +73,7 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>HEALTH {rooster.health}%</Text>
                 <View style={styles.progress}>
-                    <View style={[styles.value, { width: 100 + '%', backgroundColor: '#FF533E' }]}></View>
+                    <View style={[styles.value, { width: health + '%', backgroundColor: '#FF533E' }]}></View>
                 </View>
             </View>
 
@@ -73,7 +91,13 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                     return (
                         <TouchableOpacity
                             key={index}
-                            style={styles.signUpButton} >
+                            style={styles.signUpButton}
+                            onPress={() => {
+                                if (index === 0) {
+                                    putFeedRoosters()
+                                }
+                            }}
+                        >
                             <Text style={styles.signUpText}>{res}</Text>
                         </TouchableOpacity>
                     )

@@ -1,9 +1,7 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { useState, useEffect } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 let data = [
     { id: 1, name: 'HEN', price: '125.45', image: require('../../assets/images/userimage2.png') },

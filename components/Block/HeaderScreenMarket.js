@@ -91,6 +91,7 @@ export default function HeaderScreenMarketComponent({ navigation, linkFirst, lin
                 </View>
             </View>
         </SafeAreaView>
+        
     )
 }
 const styles = StyleSheet.create({
