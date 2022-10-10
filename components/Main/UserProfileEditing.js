@@ -48,6 +48,40 @@ export default function UserProfileEditingScreenComponent({ navigation }) {
             })
     }
 
+    //get avatars function 
+    async function getAvatars() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        await fetch(``, {
+            method: 'GET',
+            headers: {
+                'Authorization': AuthStr,
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(json => console.log(json, 'sd'))
+    }
+
+
+    // edit avatar function
+    async function editAvatar() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        await fetch(`https://api.richhens.com/api/v1/user/avatar`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': AuthStr,
+                'content-type': 'application/json',
+
+            },
+            body: JSON.stringify({})
+        })
+            .then(response => response.json())
+            .then(json => console.log(json, 'hhh'))
+    }
+
+
     useEffect(() => {
         setAppState({ loading: true });
         getUserData()

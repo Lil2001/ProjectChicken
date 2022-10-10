@@ -64,7 +64,7 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                 style={{ width: 168, height: 230, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
                 source={{ uri: `https://api.richhens.com/${rooster.picture}` }}
             />
-            <Text style={{ fontSize: 14, fontFamily: 'Inter_500Medium', textAlign: 'center', marginTop: 5, marginBottom: 10 }}>PREMIUM</Text>
+            <Text style={styles.text}>PREMIUM</Text>
             <View style={styles.blockDiv}>
                 {
                     [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
@@ -76,7 +76,6 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                     <View style={[styles.value, { width: health + '%', backgroundColor: '#FF533E' }]}></View>
                 </View>
             </View>
-
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>PRODUCTIVITY {rooster.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
@@ -192,4 +191,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter_600SemiBold',
         color: '#333333',
     },
+    text: {
+        fontSize: 14,
+        fontFamily: 'Inter_500Medium',
+        textAlign: 'center',
+        marginTop: 5,
+        marginBottom: 10,
+        lineHeight:17,
+        color:'#333333',
+        textTransform:'uppercase'
+    }
 })

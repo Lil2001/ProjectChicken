@@ -4,6 +4,7 @@ import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let chickenData = [
     { id: 1, imageFirst: require('../../assets/images/chickenfem01.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
@@ -13,8 +14,23 @@ let chickenData = [
     { id: 5, imageFirst: require('../../assets/images/chickenfem03.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' }
 ]
 
-
 export default function MarketScreenComponent({ navigation }) {
+
+    const [appState, setAppState] = useState({ loading: true, repos: null })
+
+    async function getMarketData(){
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken
+        await fetch(``, {
+              method:'POST',
+              headers:{
+                'Authorization':AuthStr,
+                'content-type':'application/json'
+              }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json, 'hgj'))
+    }
 
     return (
         <SafeAreaView style={styles.container}>

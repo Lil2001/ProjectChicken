@@ -13,6 +13,7 @@ let valTwo = [1, 2, 3, 4, 5, 6, 7]
 let buttonsData = ['Buy Now']
 
 export default function MailByBlock({ image, id }) {
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
+ 
 
 let chickenData = [
     { id: 1, imageFirst: require('../../assets/images/chickenfem01.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
@@ -14,6 +15,10 @@ let chickenData = [
 ]
 
 export default function MarketBuyScreenComponent({ navigation }) {
+const [appState, setAppState] = useState({loading:true, repos: null})
+
+
+
     return (
         <SafeAreaView style={styles.container}>
             <HeaderScreenMarketComponent

@@ -5,50 +5,13 @@ import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
 let chickenData = [
-    {
-        id: 1,
-        imageFirst: require('../../assets/images/egg1.png'),
-        name: 'GOLDEN',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    },
-    {
-        id: 2,
-        imageFirst: require('../../assets/images/egg2.png'),
-        name: 'SILVER',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    },
-    {
-        id: 3,
-        imageFirst: require('../../assets/images/egg3.png'),
-        name: 'ECO',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    },
-    {
-        id: 4,
-        imageFirst: require('../../assets/images/egg4.png'),
-        name: 'RUBY',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    },
-    {
-        id: 5,
-        imageFirst: require('../../assets/images/egg2.png'),
-        name: 'PREMIUM   PR 10',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    },
-    {
-        id: 6,
-        imageFirst: require('../../assets/images/egg1.png'),
-        name: 'GOLDEN',
-        price: 'BREAK',
-        link: 'OtherBuyPageScreen'
-    }
+    { id: 1, imageFirst: require('../../assets/images/egg1.png'), name: 'GOLDEN', price: 'BREAK', link: 'OtherBuyPageScreen' },
+    { id: 2, imageFirst: require('../../assets/images/egg2.png'), name: 'SILVER', price: 'BREAK', link: 'OtherBuyPageScreen' },
+    { id: 3, imageFirst: require('../../assets/images/egg3.png'), name: 'ECO', price: 'BREAK', link: 'OtherBuyPageScreen' },
+    { id: 4, imageFirst: require('../../assets/images/egg4.png'), name: 'RUBY', price: 'BREAK', link: 'OtherBuyPageScreen' },
+    { id: 5, imageFirst: require('../../assets/images/egg2.png'), name: 'PREMIUM   PR 10', price: 'BREAK', link: 'OtherBuyPageScreen' },
+    { id: 6, imageFirst: require('../../assets/images/egg1.png'), name: 'GOLDEN', price: 'BREAK', link: 'OtherBuyPageScreen' }
 ]
-
 
 
 export default function OtherBuyScreenComponent({ navigation }) {
@@ -79,7 +42,7 @@ export default function OtherBuyScreenComponent({ navigation }) {
                                 />
                             )
                         })}
-                        
+
                     </View>
                 </ScrollView>
             </ImageBackground>

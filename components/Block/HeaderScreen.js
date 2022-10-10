@@ -2,7 +2,6 @@ import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimension
 import { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import Svg, { Path, Rect } from "react-native-svg"
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular } from '@expo-google-fonts/inter';
 
 export default function HeaderScreenComponent({ navigation }) {
     const [changeNav, setChangeNav] = useState(0)

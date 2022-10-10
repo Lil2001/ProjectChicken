@@ -1,9 +1,6 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_300Light } from '@expo-google-fonts/inter';
 import React, { useEffect, useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 let buttonsData = ['BREAK', 'SELL']
 
@@ -31,7 +28,6 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
         getChickensData()
     }, [setAppState])
  
-
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -42,7 +38,7 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
                 source={{ uri: `https://api.richhens.com/${eggs.picture}` }}
             />
             <View style={styles.blockDiv}>
-                <Text>{eggs.type}</Text>
+                <Text style={styles.textStyle}>{eggs.type}</Text>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 25, paddingLeft: 15, paddingRight: 15, marginBottom: 25 }}>
                 {buttonsData.map((res, index) => {
@@ -149,6 +145,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#333333',
         lineHeight: 22
+    },
+    textStyle:{
+        fontSize:14,
+        lineHeight:17,
+        fontFamily:'Inter_500Medium',
+        textTransform:'uppercase',
+        color:'#333333'
     }
 })
 

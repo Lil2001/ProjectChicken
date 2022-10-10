@@ -1,15 +1,27 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
-import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function EditPasswordPageScreenComponent({ navigation }) {
     const [password, setPassword] = useState('')
     const [currentPassword, setCurrentPassword] = useState('')
     const [appState, setAppState] = useState({ loading: true, repos: null })
 
+    async function editPassword() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        await fetch(`https://api.richhens.com/api/v1/user/password`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': AuthStr,
+            },
+            body: JSON.stringify({password:password, current_password:currentPassword})
+        })
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -29,11 +41,15 @@ export default function EditPasswordPageScreenComponent({ navigation }) {
                     style={styles.input}
                     placeholder={'Input New Password'}
                     placeholderTextColor={'#383838'}
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder={'Repeat Password'}
                     placeholderTextColor={'#383838'}
+                    value={currentPassword}
+                    onChangeText={(text) => setCurrentPassword(text)}
                 />
                 <TouchableOpacity
                     style={styles.signUpButton} >

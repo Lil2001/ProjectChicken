@@ -47,7 +47,11 @@ export default function ChickenBabyBlock({ id, chickenId }) {
             .then(response => response.json())
             .then(res => { console.log(res, 'feed') })
     }
+
+
+    
     //active page
+
     useEffect(() => {
         setAppState({ loading: true });
         getChickensData()
@@ -69,6 +73,7 @@ export default function ChickenBabyBlock({ id, chickenId }) {
                     <Text style={styles.timeBlock_text}>15:25:02</Text>
                 </View>
             </View>
+            
             <View
                 style={styles.progressParrent}>
                 <Text style={styles.progressText}>HEALTH {chicks.health}% </Text>

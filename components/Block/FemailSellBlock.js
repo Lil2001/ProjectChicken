@@ -19,7 +19,6 @@ let valTwo = [1, 2, 3, 4, 5, 6, 7]
 let buttonsData = ['Buy Now']
 
 export default function FemSellBlock({ image, id }) {
-    let [value, setValue] = useState(0)
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         lineHeight: 22
     },
-    input :{
+    input: {
         width: '80%',
         backgroundColor: '#F3F3F3',
         borderWidth: 1,

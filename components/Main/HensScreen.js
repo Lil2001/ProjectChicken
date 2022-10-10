@@ -1,5 +1,4 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderScreenComponent from '../Block/HeaderScreen';
 import FooterScreenComponent from '../Block/FooterScreen';
@@ -37,6 +36,7 @@ export default function HensScreenComponent({ navigation, name }) {
         getChickensData()
     }, [setAppState])
 
+
     console.log(data, 'chicken data ')
     return (
         <SafeAreaView style={styles.container}>
@@ -68,6 +68,8 @@ export default function HensScreenComponent({ navigation, name }) {
         </SafeAreaView>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     container: {

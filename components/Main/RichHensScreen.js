@@ -1,5 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
+import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground } from 'react-native';
 import React, { useState, useContext, useEffect } from 'react';
 import HeaderScreenComponent from '../Block/HeaderScreen';
 import FooterScreenComponent from '../Block/FooterScreen';
@@ -9,10 +8,7 @@ import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 
 
 export default function RichHensScreenComponent({ navigation }) {
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
+    const [appState, setAppState] = useState({ loading: false, repos: null, });
     const [data, setData] = useState([])
 
     // Get request for Chickens data
@@ -28,7 +24,7 @@ export default function RichHensScreenComponent({ navigation }) {
             },
         })
             .then(response => response.json())
-            .then(res => {setData(res.data.roosters)})
+            .then(res => { setData(res.data.roosters) })
     }
 
     // useEffect for uploading in every time when i go to that page

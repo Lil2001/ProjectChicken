@@ -1,8 +1,6 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from '@expo-google-fonts/inter';
 import ChickenBlockScreenComponent from '../Block/ChickenBlockScreen';
-import { Context } from '../AuthContext/context';
 import RichBlockScreenComponent from '../Block/RichBlockScreen';
 import ChickenBabyBlock from '../Block/ChickenBabyBlock';
 import OtherScreenBlock from '../Block/OtherBlock';
@@ -12,8 +10,6 @@ import FemByBlock from '../Block/FemBuyBlock';
 import MailSellBlock from '../Block/MailSellBlock'
 import OtherBuyBlock from '../Block/OtherBuyBlock'
 import OtherSellBlock from '../Block/OtherSellBlock';
-
-
 
 let data = [
     { id: 1, image: require('../../assets/images/chickenfem01.png'), text: '#451790238' },

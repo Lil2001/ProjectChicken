@@ -1,6 +1,5 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Modal } from 'react-native';
 import React, { useState } from 'react';
-import Svg, { Path, Rect } from "react-native-svg"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 

@@ -1,5 +1,6 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+
 let buttonsData = ['BUY NOW']
 
 export default function OtherSellBlock({ id, image, navigation }) {

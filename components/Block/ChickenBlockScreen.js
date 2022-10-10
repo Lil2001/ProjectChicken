@@ -71,7 +71,6 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 style={{ width: 168, height: 235, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
                 source={{ uri: `https://api.richhens.com/${chicken.picture}` }}
             />
-
             <View style={styles.blockDiv}>
                 {
                     [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
@@ -119,7 +118,6 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                         </TouchableOpacity>
                     )
                 })}
-
             </View>
         </View>
     )
@@ -130,6 +128,7 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: 'white',
         borderRadius: 15,
+        
         borderWidth: 1,
         borderColor: '#91A5A1',
         alignSelf: 'center',
