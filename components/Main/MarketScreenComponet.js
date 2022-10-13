@@ -1,37 +1,38 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { View, ScrollView, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let chickenData = [
-    { id: 1, imageFirst: require('../../assets/images/chickenfem01.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
-    { id: 2, imageFirst: require('../../assets/images/chickenfem02.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
-    { id: 3, imageFirst: require('../../assets/images/chickenfem3.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
-    { id: 4, imageFirst: require('../../assets/images/chickenfem2.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' },
-    { id: 5, imageFirst: require('../../assets/images/chickenfem03.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen' }
-]
 
 export default function MarketScreenComponent({ navigation }) {
 
     const [appState, setAppState] = useState({ loading: true, repos: null })
+    const [sellData, setSellData] = useState([])
 
-    async function getMarketData(){
-        let userToken = await AsyncStorage.getItem('userToken');
+    async function getMarketSellData() {
+        let userToken = await AsyncStorage.getItem('userToken')
         let AuthStr = 'Bearer ' + userToken
-        await fetch(``, {
-              method:'POST',
-              headers:{
-                'Authorization':AuthStr,
-                'content-type':'application/json'
-              }
-        })
-        .then(response => response.json())
-        .then(json => console.log(json, 'hgj'))
+        await fetch('https://api.richhens.com/api/v1/market?entityType=chicken', {
+            method: 'GET',
+            headers: {
+                'Authorization': AuthStr,
+            }
+        }
+        )
+            .then(response => response.json())
+            .then(json => { console.log(json, 'ss'); setSellData(json.data) })
     }
 
+
+    useEffect(() => {
+        setAppState({ loading: true })
+        getMarketSellData()
+    }, [setAppState]);
+
+    // console.log(sellData, 'ss')
     return (
         <SafeAreaView style={styles.container}>
             <HeaderScreenMarketComponent
@@ -49,21 +50,7 @@ export default function MarketScreenComponent({ navigation }) {
                         <AddChickenComponent
                             name={'SELL CHICKEN'}
                         />
-                        {chickenData.map((res, index) => {
-                            return (
-                                <ChickenRichHensComponent
-                                    navigation={navigation}
-                                    key={index}
-                                    imageFirst={res.imageFirst}
-                                    imageSecond={res.imageSecond}
-                                    name={res.name}
-                                    price={res.price}
-                                    e={res.link}
-                                />
-                            )
-
-                        })}
-
+                        {sellData.map((value, index) => <ChickenRichHensComponent key={index} navigation={navigation} imageFirst={value.item.picture} e={'SingleChickenScreen'} price={'6.00 BNB'} name={'PREMIUM   PR 10'} />)}
                     </View>
                 </ScrollView>
             </ImageBackground>
@@ -71,6 +58,8 @@ export default function MarketScreenComponent({ navigation }) {
         </SafeAreaView>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -92,3 +81,4 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     }
 })
+

@@ -18,6 +18,7 @@ export default function HeaderScreenComponent({ navigation }) {
         navigation.navigate(e)
     }
 
+
     return (
         <SafeAreaView>
             <View style={styles.navDiv}>

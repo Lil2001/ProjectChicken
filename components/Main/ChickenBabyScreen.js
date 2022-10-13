@@ -5,6 +5,7 @@ import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { G } from 'react-native-svg';
 
 export default function ChickenBabyScreenComponent({ navigation }) {
 

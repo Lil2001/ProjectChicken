@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, TouchableOpacity, Modal } from 'react-native';
 import { useEffect, useState } from 'react';
 import Svg, { Path, Rect } from "react-native-svg"
 import { LinearGradient } from 'expo-linear-gradient';

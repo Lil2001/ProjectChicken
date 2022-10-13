@@ -1,14 +1,15 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let buttonsData = ['FEED', 'BREED', 'SELL']
 
-export default function RichBlockScreenComponent({ image, id, chickenId }) {
+export default function RichBlockScreenComponent({ image, id, chickenId, navigation }) {
     const [appState, setAppState] = useState({ loading: false, repos: null });
     const [health, setHealth] = useState(0);
     const [prod, setProd] = useState(0)
     const [rooster, setRooster] = useState([])
+    const [picture, setPicture] = useState('')
 
 
     // Get Roosters Data
@@ -28,6 +29,7 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                 setRooster(res.data.rooster)
                 setHealth(res.data.rooster.health)
                 setProd(res.data.rooster.productivity)
+                setPicture(res.data.rooster.picture)
             })
     }
 
@@ -94,6 +96,8 @@ export default function RichBlockScreenComponent({ image, id, chickenId }) {
                             onPress={() => {
                                 if (index === 0) {
                                     putFeedRoosters()
+                                } else if (index === 2) {
+                                    navigation.navigate('SingleSellScreen', { chickenId, picture, prod })
                                 }
                             }}
                         >
@@ -197,8 +201,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 5,
         marginBottom: 10,
-        lineHeight:17,
-        color:'#333333',
-        textTransform:'uppercase'
+        lineHeight: 17,
+        color: '#333333',
+        textTransform: 'uppercase'
     }
 })

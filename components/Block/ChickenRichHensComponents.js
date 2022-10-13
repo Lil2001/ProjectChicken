@@ -32,6 +32,10 @@ export default function ChickenRichHensComponent({ imageFirst, imageSecond, name
     )
 }
 
+
+
+
+
 const styles = StyleSheet.create({
 
     chickenBlock: {

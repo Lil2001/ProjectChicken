@@ -1,20 +1,43 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { View, ScrollView, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let chickenData = [
-    { id: 1, imageFirst: require('../../assets/images/chickenmail1.png'), link: 'SingleChickenScreen', name: 'RARE  PR 10', price: 'FEED' },
-    { id: 2, imageFirst: require('../../assets/images/chickenmail2.png'), link: 'SingleChickenScreen', name: 'PREMIUM  PR 10', price: 'FEED' },
-    { id: 3, imageFirst: require('../../assets/images/chickenmail3.png'), link: 'SingleChickenScreen', name: 'PREMIUM  PR 10', price: 'FEED' },
-    { id: 4, imageFirst: require('../../assets/images/chickenfem3.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen', },
-    { id: 5, imageFirst: require('../../assets/images/chickenfem2.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'SingleChickenScreen', },
-    { id: 6, imageFirst: require('../../assets/images/chickenfem03.png'), name: 'PREMIUM   PR 10', price: '6.00 BNB', link: 'MailSellPageScreen' }
-]
 
 export default function RichHensScreenMarketComponent({ navigation }) {
+
+    const [appState, setAppState] = useState({ loading: true, repos: null })
+    const [sellData, setSellData] = useState([])
+
+    //Get roosters market sell data 
+
+    async function getMarketSellData() {
+        let userToken = await AsyncStorage.getItem('userToken')
+        let AuthStr = 'Bearer ' + userToken
+        await fetch(`https://api.richhens.com/api/v1/market?entityType=rooster`, {
+            method: 'GET',
+            headers: {
+                'Authorization': AuthStr,
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                setSellData(json.data)
+            })
+    }
+
+
+    useEffect(() => {
+        setAppState({ loading: true })
+        getMarketSellData()
+    }, [setAppState])
+
+
+
     return (
         <SafeAreaView style={styles.container}>
             <HeaderScreenMarketComponent
@@ -24,6 +47,7 @@ export default function RichHensScreenMarketComponent({ navigation }) {
                 e={'RichMarketBuyScreen'}
                 d={'RichScreenMarket'}
             />
+
             <ImageBackground
                 style={styles.backgroundImage}
                 source={require('../../assets/images/image2.png')}>
@@ -32,18 +56,7 @@ export default function RichHensScreenMarketComponent({ navigation }) {
                         <AddChickenComponent
                             name={'SELL CHICKEN'}
                         />
-                        {chickenData.map((res, index) => {
-                            return (
-                                <ChickenRichHensComponent
-                                    key={index}
-                                    imageFirst={res.imageFirst}
-                                    navigation={navigation}
-                                    name={res.name}
-                                    price={res.price}
-                                    e={res.link}
-                                />
-                            )
-                        })}
+                        {sellData.map((value, index) => <ChickenRichHensComponent key={index} navigation={navigation} imageFirst={value.item.picture} e={'SingleChickenScreen'} price={'6.00 BNB'} name={'PREMIUM   PR 10'} />)}
                     </View>
                 </ScrollView>
                 <FooterScreenComponent navigation={navigation} />

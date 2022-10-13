@@ -11,21 +11,16 @@ import MailSellBlock from '../Block/MailSellBlock'
 import OtherBuyBlock from '../Block/OtherBuyBlock'
 import OtherSellBlock from '../Block/OtherSellBlock';
 
-let data = [
-    { id: 1, image: require('../../assets/images/chickenfem01.png'), text: '#451790238' },
-    { id: 2, image: require('../../assets/images/chickenmail2.png'), text: '#451790238' }
-]
 
-export default function SingleChickenScreenComponent({ navigation }) {
 
-    // const route = useRoute();
+export default function SingleSellChickenScreenComponent({ navigation, chickenId, quantity, quality, chance, prod, picture }) {
+
     const routes = navigation.getState()?.routes;
-    console.log(routes, 'route')
-    const prevRoute = routes[routes.length - 2];
+    const prevRoute = routes[routes.length - 3];
     const route = useRoute()
-
-    let chickenId = route.params.chickensId
-
+    const prev = routes[routes.length - 2]
+    console.log(prev)
+    console.log(route)
 
     return (
         <SafeAreaView style={styles.container}>
@@ -33,7 +28,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
                 source={require('../../assets/images/image2.png')}>
                 <View style={styles.navDivFirst}>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate(prevRoute.name)}
+                        onPress={() => navigation.navigate(prev.name, { chickenId })}
                         style={styles.navDivFirstUser}>
                         <Image style={{ width: 40, height: 40 }}
                             source={require('../../assets/images/Frame27.png')} />
@@ -55,92 +50,48 @@ export default function SingleChickenScreenComponent({ navigation }) {
                         </View>
                     </TouchableOpacity>
                 </View>
-                {
-                    prevRoute.name === 'HensScreen' &&
-                    <ChickenBlockScreenComponent
-                        id={'#451790238'}
-                        chickenId={chickenId}
-                        navigation={navigation}
-                    />
-                }
-                {
-                    prevRoute.name === 'RichScreen' &&
-                    <RichBlockScreenComponent
-                        id={'#451790238'}
-                        chickenId={chickenId}
-                    />
-                }
-                {
-                    prevRoute.name === 'ChickenBabyScreen' &&
-                    <>
-                        <ChickenBabyBlock
-                            id={'#451790238'}
-                            image={require('../../assets/images/chickenbaby1.png')}
-                            chickenId={chickenId}
-                        />
-                        <View style={styles.box}>
-                            <Text style={styles.box_nameText}>BREEDED FROM</Text>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                                {data.map((value, index) => {
-                                    return (
-                                        <View key={index} style={styles.miniblock}>
-                                            <View style={styles.idBlock}>
-                                                <Text style={styles.idBlockText} >{value.text}</Text>
-                                            </View>
-                                            <Image style={{ width: 98, height: 115, alignSelf: 'center', marginTop: 5 }} source={value.image} />
-                                        </View>
-                                    )
-                                })}
-
-                            </View>
-                        </View>
-                    </>
-                }
-                {prevRoute.name === 'OtherScreen' &&
-                    <OtherScreenBlock
-                        id={'#451790238'}
-                        image={require('../../assets/images/egg3.png')}
-                        chickenId={chickenId}
-                    />
-                }
-                {prevRoute.name === 'RichMarketBuyScreen' &&
-                    <MailByBlock
-                        id={'#451790238'}
-                        image={require('../../assets/images/chickenmail4.png')}
-                    />
-                }
-                {prevRoute.name === 'MarketScreen' &&
+                {prevRoute.name === 'HensScreen' &&
                     <FemSellBlock
                         id={'#451790238'}
                         image={require('../../assets/images/chickenfem1.png')}
-                    />
-                }
-
-                {prevRoute.name === 'MarketBuyScreen' &&
-                    <FemByBlock
-                        id={'#451790238'}
-                        image={require('../../assets/images/chickenfem1.png')}
+                        chickenId={route.params.chickenId}
+                        chance={route.params.chance}
+                        prod={route.params.prod}
+                        quality={route.params.quality}
+                        quantity={route.params.quantity}
+                        picture={route.params.picture}
                     />
                 }
                 {prevRoute.name === 'RichScreenMarket' &&
                     <MailSellBlock
                         id={'#451790238'}
-                        image={require('../../assets/images/chickenmail4.png')}
+                        // image={require('../../assets/images/chickenmail4.png')}
+                        chickenId={route.params.chickenId}
+                        // chance={route.params.chance}
+                        // prod={route.params.prod}
+                        // quality={route.params.quality}
+                        // quantity={route.params.quantity}
+                        picture={route.params.picture}
                     />
                 }
-                {prevRoute.name === 'OtherBuyScreen' &&
-                    <OtherBuyBlock
+                {/* {prevRoute.name === 'RichScreenMarket' &&
+                    <MailSellBlock
                         id={'#451790238'}
-                        image={require('../../assets/images/egg3.png')}
+                        image={require('../../assets/images/chickenmail4.png')}
+                        chickenId={route.params.chickenId}
+                        chance={route.params.chance}
+                        prod={route.params.prod}
+                        quality={route.params.quality}
+                        quantity={route.params.quantity}
+                        picture={route.params.picture}
                     />
                 }
-
                 {prevRoute.name === 'OtherSellScreen' &&
                     <OtherSellBlock
                         id={'#451790238'}
                         image={require('../../assets/images/egg3.png')}
                     />
-                }
+                } */}
 
             </ImageBackground>
         </SafeAreaView>

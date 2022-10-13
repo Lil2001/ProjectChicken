@@ -23,7 +23,6 @@ export default function MailByBlock({ image, id }) {
                 style={{ width: 168, height: 200, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
                 source={image}
             />
-
             <View style={styles.blockDiv}>
                 {data.map((res, index) => {
                     return (
@@ -66,6 +65,7 @@ export default function MailByBlock({ image, id }) {
         </View>
     )
 }
+
 
 
 const styles = StyleSheet.create({

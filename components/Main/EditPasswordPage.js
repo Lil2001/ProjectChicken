@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -17,11 +17,12 @@ export default function EditPasswordPageScreenComponent({ navigation }) {
                 'Content-type': 'application/json',
                 'Authorization': AuthStr,
             },
-            body: JSON.stringify({password:password, current_password:currentPassword})
+            body: JSON.stringify({ password: password, current_password: currentPassword })
         })
-        .then((response) => response.json())
-        .then((json) => console.log(json))
+            .then((response) => response.json())
+            .then((json) => console.log(json))
     }
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -43,6 +44,7 @@ export default function EditPasswordPageScreenComponent({ navigation }) {
                     placeholderTextColor={'#383838'}
                     value={password}
                     onChangeText={(text) => setPassword(text)}
+                    secureTextEntry={true}
                 />
                 <TextInput
                     style={styles.input}
@@ -50,8 +52,10 @@ export default function EditPasswordPageScreenComponent({ navigation }) {
                     placeholderTextColor={'#383838'}
                     value={currentPassword}
                     onChangeText={(text) => setCurrentPassword(text)}
+                    secureTextEntry={true}
                 />
                 <TouchableOpacity
+                    onPress={() => editPassword()}
                     style={styles.signUpButton} >
                     <Text style={styles.signUpText}>SAVE</Text>
                 </TouchableOpacity>

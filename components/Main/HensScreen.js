@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View,  ScrollView, StyleSheet,SafeAreaView, ImageBackground,  } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderScreenComponent from '../Block/HeaderScreen';
 import FooterScreenComponent from '../Block/FooterScreen';
@@ -68,7 +68,6 @@ export default function HensScreenComponent({ navigation, name }) {
         </SafeAreaView>
     )
 }
-
 
 
 const styles = StyleSheet.create({

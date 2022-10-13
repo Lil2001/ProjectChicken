@@ -36,6 +36,7 @@ export default function RichHensScreenComponent({ navigation }) {
     }, [setAppState])
 
 
+    
     console.log(data, 'roosters data')
 
     return (

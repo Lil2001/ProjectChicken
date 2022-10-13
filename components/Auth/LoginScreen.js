@@ -41,7 +41,7 @@ export default function LoginScreenComponent({ navigation }) {
         callback();
     }
 
-    // AsyncStorage.removeItem('userToken')
+    AsyncStorage.removeItem('userToken')
     return (
         <SafeAreaView style={styles.container}>
             <Modal

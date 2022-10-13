@@ -1,19 +1,37 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { View, ScrollView, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import HeaderScreenMarketComponent from '../Block/HeaderScreenMarket';
 import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';
-let chickenData = [
-    { id: 1, imageFirst: require('../../assets/images/chickenbaby1.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-    { id: 2, imageFirst: require('../../assets/images/chickenbaby2.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-    { id: 3, imageFirst: require('../../assets/images/chickenbaby3.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-    { id: 4, imageFirst: require('../../assets/images/chickenbaby3.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-    { id: 5, imageFirst: require('../../assets/images/chickenbaby1.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-    { id: 6, imageFirst: require('../../assets/images/chickenbaby2.png'), name: 'PREMIUM   PR 10', price: 'Feed' },
-]
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function ChickenBabysMarketScreenComponent({ navigation }) {
+    const [appState, setAppState] = useState({ loading: false, repos: null })
+    const [sellData, setSellData] = useState([])
+
+    // Get sell data market
+
+    async function getMarketSellData() {
+        let userToken = await AsyncStorage.getItem('userToken')
+        let AuthStr = 'Bearer ' + userToken
+        await fetch(`https://api.richhens.com/api/v1/market?entityType=chick`, {
+            method: 'GET',
+            headers: {
+                'Authorization': AuthStr,
+            }
+        })
+            .then(response => response.json())
+            .then(json => { setSellData(json.data) })
+    }
+    // Update Page 
+
+    useEffect(() => {
+        setAppState({ loading: true })
+        getMarketSellData()
+    }, [setAppState])
+    console.log(sellData)
     return (
         <SafeAreaView style={styles.container}>
             <HeaderScreenMarketComponent
@@ -31,17 +49,8 @@ export default function ChickenBabysMarketScreenComponent({ navigation }) {
                         <AddChickenComponent
                             name={'SELL CHICKEN'}
                         />
-                        {chickenData.map((res, index) => {
-                            return (
-                                <ChickenRichHensComponent
-                                    key={index}
-                                    imageFirst={res.imageFirst}
-                                    name={res.name}
-                                    price={res.price}
-                                />
-                            )
-
-                        })}
+                        {/* {Object.entries(sellData).map(([key, value], i) => <ChickenRichHensComponent key={i} navigation={navigation} value={key} imageFirst={value.item.picture} price={'6.00 BNB'} name={'PREMIUM   PR 10'} />)} */}
+                        {sellData.map((value, index) => <ChickenRichHensComponent key={index} navigation={navigation} imageFirst={value.item.picture} price={'6.00 BNB'} name={'PREMIUM   PR 10'} />)}
                     </View>
                 </ScrollView>
             </ImageBackground>

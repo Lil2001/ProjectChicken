@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let buttonsData = ['FEED', 'BREED', 'SELL']
 
-export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
+export default function ChickenBlockScreenComponent({ image, id, chickenId, navigation }) {
     let [value, setValue] = useState(0)
     const [appState, setAppState] = useState({ loading: false, repos: null });
     const [health, setHealth] = useState(0)
@@ -12,6 +12,8 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
     const [quality, setQuality] = useState(0)
     const [chicken, setChicken] = useState([])
     const [prod, setProd] = useState(0)
+    const [chance, setChance] = useState(0)
+    const [picture, setPicture] = useState('')
 
 
     // Get request for Chickens data
@@ -34,6 +36,8 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                 setQuantity(res.data.chicken.quantity)
                 setQuality(res.data.chicken.quality)
                 setProd(res.data.chicken.productivity)
+                setChance(res.data.chicken.chance)
+                setPicture(res.data.chicken.picture)
             })
     }
 
@@ -55,11 +59,11 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
     }
 
 
-
     useEffect(() => {
         setAppState({ loading: true });
         getChickensData()
     }, [setAppState])
+
 
 
     return (
@@ -94,7 +98,12 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                     <View style={[styles.value, { width: quality * 3.3 + '%', backgroundColor: '#00C318' }]}></View>
                 </View>
             </View>
-
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>CHANCE {chicken.chance}</Text>
+                <View style={styles.progress}>
+                    <View style={[styles.value, { width: chance * 3.3 + '%', backgroundColor: '#00A8FF' }]}></View>
+                </View>
+            </View>
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>PRODUCTIVITY {chicken.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
@@ -110,6 +119,8 @@ export default function ChickenBlockScreenComponent({ image, id, chickenId }) {
                             onPress={() => {
                                 if (index === 0) {
                                     putFeedChickens()
+                                } else if (index === 2) {
+                                    navigation.navigate('SingleSellScreen', { chickenId, quantity, quality, chance, prod, picture })
                                 }
                             }}
                             key={index}
@@ -128,7 +139,6 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: 'white',
         borderRadius: 15,
-        
         borderWidth: 1,
         borderColor: '#91A5A1',
         alignSelf: 'center',

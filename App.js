@@ -27,6 +27,7 @@ import ChickenBabyBuyScreenComponent from './components/Main/ChickenBabyBuyScree
 import OtherSellScreenComponent from './components/Main/OtherSellPageScreen';
 import OtherBuyScreenComponent from './components/Main/OtherBuyScreen';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SingleSellChickenScreenComponent from './components/Main/SingleSellChickenPage';
 
 export default function App() {
 
@@ -155,27 +156,7 @@ export default function App() {
               headerShown: false,
             })}>
             <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
-            {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
-            {/* <Stack.Screen name="AuthScreen" component={AuthScreenComponent} />
-            <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
-            <Stack.Screen name="HensScreen" component={HensScreenComponent} />
-            <Stack.Screen name="MarketScreen" component={MarketScreenComponent} />
-            <Stack.Screen name="ChickenBabyScreen" component={ChickenBabyScreenComponent} />
-            <Stack.Screen name="ChickenBabyMarketScreen" component={ChickenBabysMarketScreenComponent} />
-            <Stack.Screen name="OtherScreen" component={OtherScreenComponent} />
-            <Stack.Screen name="RichScreenMarket" component={RichHensScreenMarketComponent} />
-            <Stack.Screen name="TimelineScreen" component={TimeLineScreenComponent} />
-            <Stack.Screen name="UserProfileScreen" component={UserProfileScreenComponent} />
-            <Stack.Screen name="UserProfileEditingScreen" component={UserProfileEditingScreenComponent} />
-            <Stack.Screen name="EditNamePageScreen" component={EditNamePageScreenComponent} />
-            <Stack.Screen name="EditPasswordPageScreen" component={EditPasswordPageScreenComponent} />
-            <Stack.Screen name="TransactionPageScreen" component={TransactionPageScreenComponent} />
-            <Stack.Screen name="SingleChickenScreen" component={SingleChickenScreenComponent} />
-            <Stack.Screen name='MarketBuyScreen' component={MarketBuyScreenComponent} />
-            <Stack.Screen name='RichMarketBuyScreen' component={RichMarketBuyScreenComponent} />
-            <Stack.Screen name='ChickenBabyBuyScreen' component={ChickenBabyBuyScreenComponent} />
-            <Stack.Screen name='OtherSellScreen' component={OtherSellScreenComponent} />
-            <Stack.Screen name='OtherBuyScreen' component={OtherBuyScreenComponent} /> */}
+            <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
           </Stack.Navigator>
           )
           :
@@ -187,7 +168,7 @@ export default function App() {
               })}>
               {/* <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
               <Stack.Screen name="AuthScreen" component={AuthScreenComponent} /> */}
-              <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
+              {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
               <Stack.Screen name="HensScreen" component={HensScreenComponent} />
               <Stack.Screen name="RichScreen" component={RichHensScreenComponent} />
               <Stack.Screen name="MarketScreen" component={MarketScreenComponent} />
@@ -207,6 +188,7 @@ export default function App() {
               <Stack.Screen name='ChickenBabyBuyScreen' component={ChickenBabyBuyScreenComponent} />
               <Stack.Screen name='OtherSellScreen' component={OtherSellScreenComponent} />
               <Stack.Screen name='OtherBuyScreen' component={OtherBuyScreenComponent} />
+              <Stack.Screen name='SingleSellScreen' component={SingleSellChickenScreenComponent} />
             </Stack.Navigator>
           )
         }

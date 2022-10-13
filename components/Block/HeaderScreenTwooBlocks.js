@@ -1,8 +1,8 @@
-import { Button, Modal, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { Modal, View, Text, Image,  StyleSheet, StatusBar,  SafeAreaView,  TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import Svg, { Path, Rect } from "react-native-svg"
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium, Inter_400Regular } from '@expo-google-fonts/inter';
+
 
 export default function HeaderScreenTwoBlockComponent({ navigation, linkFirst, linkSecond }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -16,7 +16,6 @@ export default function HeaderScreenTwoBlockComponent({ navigation, linkFirst, l
     const goToPages = (e) => {
         navigation.navigate(e)
     }
-
 
 
     return (

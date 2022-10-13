@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, SafeAreaViewBase } from 'react-native';
+import { Text, Image,  StyleSheet,  TouchableOpacity} from 'react-native';
 import React, { useState } from 'react';
 
 export default function AddChickenComponent({ navigation, name }) {

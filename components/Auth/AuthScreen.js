@@ -1,7 +1,7 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
-export default function AuthScreenComponent({navigation}) {
+export default function AuthScreenComponent({ navigation }) {
     const goToMainPage = () => {
         navigation.navigate('HensScreen')
     }
@@ -28,13 +28,13 @@ export default function AuthScreenComponent({navigation}) {
                     />
 
                     <TouchableOpacity
-                    onPress={() => goToMainPage()}
-                    style={styles.signUpButton} >
+                        onPress={() => goToMainPage()}
+                        style={styles.signUpButton} >
                         <Text style={styles.signUpText}>LOGIN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.link}>
-                        <Text style={[styles.agreeText, {textDecorationLine: 'underline'}]}>Where can i get a code?</Text>
-                        
+                        <Text style={[styles.agreeText, { textDecorationLine: 'underline' }]}>Where can i get a code?</Text>
+
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft:20
+        paddingLeft: 20
     },
 
     buttonText: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: '#333333',
         // elevation: 8
-        borderBottomWidth:3
+        borderBottomWidth: 3
 
     },
     signUpText: {

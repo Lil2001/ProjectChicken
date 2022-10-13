@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import Svg, { Path, Rect } from "react-native-svg"
 
@@ -75,7 +75,7 @@ export default function HeaderScreenMarketComponent({ navigation, linkFirst, lin
                             style={route.name === 'MarketBuyScreen' || route.name === 'RichMarketBuyScreen' || route.name === 'ChickenBabyBuyScreen' || route.name === 'OtherBuyScreen' ? styles.buttonYellow : styles.button}
                         >
 
-                            
+
                             <Text style={styles.buttonYellowText}>{linkSecond}</Text>
                         </TouchableOpacity>
                     </View>
@@ -92,7 +92,7 @@ export default function HeaderScreenMarketComponent({ navigation, linkFirst, lin
                 </View>
             </View>
         </SafeAreaView>
-        
+
     )
 }
 const styles = StyleSheet.create({

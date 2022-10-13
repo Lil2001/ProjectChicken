@@ -14,7 +14,6 @@ export default function TransactionPageScreenComponent({ navigation }) {
     const prevRoute = routes[routes.length - 2];
 
 
-
     return (
         <SafeAreaView style={styles.container}>
             <LinearGradient

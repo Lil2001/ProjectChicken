@@ -1,24 +1,32 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-
-let data = [
-    { id: 1, img: require('../../assets/images/Frame22.png') },
-    { id: 2, img: require('../../assets/images/Frame22.png') },
-    { id: 3, img: require('../../assets/images/Frame22.png') },
-    { id: 4, img: require('../../assets/images/Frame22.png') }
-]
-
-let staticData = [
-    { id: 2, name: 'QUANTITY', price: '', count: 10, backgroundColor: '#FFC700', value: 35 },
-    { id: 3, name: 'QUALITY', price: '', count: 20, backgroundColor: '#00C318', value: 70 },
-    { id: 4, name: 'CHANCE', price: '', count: 20, backgroundColor: '#00A8FF', value: 70 },
-]
-
-let valTwo = [1, 2, 3, 4, 5, 6, 7]
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let buttonsData = ['Buy Now']
 
-export default function FemSellBlock({ image, id }) {
+export default function FemSellBlock({ image, id, chickenId, quantity, chance, prod, quality, picture }) {
+    // console.log(chance, chickenId, quantity, quality, prod, 'sdfsd')
+    const [price, setPrice] = useState('')
+
+    async function sellChicken() {
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken
+        await fetch('https://api.richhens.com/api/v1/market/sell', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': AuthStr
+            },
+            body: JSON.stringify({
+                id: chickenId,
+                amount: 1,
+                entity_type: "chicken"
+            })
+        })
+            .then(response => response.json)
+            .then(res => console.log(res, ' ressss'))
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -26,42 +34,37 @@ export default function FemSellBlock({ image, id }) {
             </View>
             <Image
                 style={{ width: 168, height: 200, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
-                source={image}
+                source={{ uri: `https://api.richhens.com/${picture}` }}
             />
 
             <View style={styles.blockDiv}>
-                {data.map((res, index) => {
-                    return (
-                        <Image
-                            style={styles.blockDivImg}
-                            key={index}
-                            source={res.img}
-                        />
-                    )
-                })}
+                {
+                    [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
+                }
             </View>
-            {staticData.map((res, index) => {
-                return (
-                    <View
-                        key={index}
-                        style={styles.progressParrent}>
-                        <Text style={styles.progressText}>{res.name} {res.count}{res.price}</Text>
-                        <View style={styles.progress}>
-                            <View style={[styles.value, { width: res.value + '%', backgroundColor: res.backgroundColor }]}></View>
-                        </View>
-                    </View>
-                )
-            })}
-            <View
-                style={styles.progressParrent}>
-                <Text style={styles.progressText}>PRODUCTIVITY 8</Text>
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>QUANTITY {quantity}</Text>
+                <View style={styles.progress}>
+                    <View style={[styles.value, { width: quantity * 3.3 + '%', backgroundColor: '#FFC700' }]}></View>
+                </View>
+            </View>
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>QUALITY {quality}</Text>
+                <View style={styles.progress}>
+                    <View style={[styles.value, { width: quality * 3.3 + '%', backgroundColor: '#00C318' }]}></View>
+                </View>
+            </View>
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>CHANCE {chance}</Text>
+                <View style={styles.progress}>
+                    <View style={[styles.value, { width: chance * 3.3 + '%', backgroundColor: '#00A8FF' }]}></View>
+                </View>
+            </View>
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>PRODUCTIVITY {prod}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
                     {
-                        valTwo.map((item, index) => {
-                            return (
-                                <View key={index} style={[{ width: 10 + '%', backgroundColor: '#00E755', marginRight: 2 }, index === 0 ? styles.bordersRadius : styles.bordersNone]}></View>
-                            )
-                        })
+                        [...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
                     }
                 </View>
             </View>
@@ -69,6 +72,8 @@ export default function FemSellBlock({ image, id }) {
             <TextInput
                 placeholder='Input Price in BNB'
                 keyboardType='numeric'
+                value={price}
+                onChangeText={(text) => setPrice(text)}
                 style={styles.input}
             />
 

@@ -30,7 +30,6 @@ export default function TimeLineScreenComponent({ navigation }) {
                             <Text style={styles.usserText} >User</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() => navigation.navigate('TransactionPageScreen')}
                         style={styles.usserTwo} >
@@ -47,7 +46,6 @@ export default function TimeLineScreenComponent({ navigation }) {
                             />
                         </View>
                     </TouchableOpacity>
-
                 </View>
             </View>
             <ImageBackground
@@ -72,7 +70,6 @@ export default function TimeLineScreenComponent({ navigation }) {
                         )
 
                     })}
-
                 </ScrollView>
             </ImageBackground>
             <FooterScreenComponent navigation={navigation} />

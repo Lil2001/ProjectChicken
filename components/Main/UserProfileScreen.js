@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
+import { Button, View, Text, Image, ScrollView, StyleSheet, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Switch, Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import Svg, { Path, Rect } from "react-native-svg"
 import { LinearGradient } from 'expo-linear-gradient';
@@ -27,7 +27,7 @@ export default function UserProfileScreenComponent({ navigation }) {
             },
         })
             .then(response => response.json())
-            .then(res => {setData(res.data.user)})
+            .then(res => { setData(res.data.user) })
     }
 
     useEffect(() => {

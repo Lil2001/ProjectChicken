@@ -17,8 +17,6 @@ let chickenData = [
 export default function MarketBuyScreenComponent({ navigation }) {
 const [appState, setAppState] = useState({loading:true, repos: null})
 
-
-
     return (
         <SafeAreaView style={styles.container}>
             <HeaderScreenMarketComponent

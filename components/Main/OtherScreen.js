@@ -1,8 +1,6 @@
 import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import { useFonts, Inter_200ExtraLight, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Svg, { Path, Rect } from "react-native-svg"
 import FooterScreenComponent from '../Block/FooterScreen';
 import ChickenRichHensComponent from '../Block/ChickenRichHensComponents';
 import AddChickenComponent from '../Block/AddChickenComponent';

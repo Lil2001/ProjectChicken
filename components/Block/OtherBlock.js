@@ -1,4 +1,4 @@
-import { Button, View, Text, Image, ScrollView, StyleSheet, StatusBar, Dimensions, ActivityIndicator, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -20,14 +20,14 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
             },
         })
             .then(response => response.json())
-            .then(res =>  setEggs(res.data.egg))
+            .then(res => setEggs(res.data.egg))
     }
 
     useEffect(() => {
         setAppState({ loading: true });
         getChickensData()
     }, [setAppState])
- 
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
@@ -146,12 +146,12 @@ const styles = StyleSheet.create({
         color: '#333333',
         lineHeight: 22
     },
-    textStyle:{
-        fontSize:14,
-        lineHeight:17,
-        fontFamily:'Inter_500Medium',
-        textTransform:'uppercase',
-        color:'#333333'
+    textStyle: {
+        fontSize: 14,
+        lineHeight: 17,
+        fontFamily: 'Inter_500Medium',
+        textTransform: 'uppercase',
+        color: '#333333'
     }
 })
 
