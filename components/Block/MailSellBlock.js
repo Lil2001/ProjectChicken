@@ -1,49 +1,29 @@
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
-let data = [
-    { id: 1, img: require('../../assets/images/Frame22.png') },
-    { id: 2, img: require('../../assets/images/Frame22.png') },
-    { id: 3, img: require('../../assets/images/Frame22.png') },
-    { id: 4, img: require('../../assets/images/Frame22.png') }
-]
-
-let valTwo = [1, 2, 3, 4, 5, 6, 7]
-
 let buttonsData = ['SELL NOW']
 
-export default function MailSellBlock({ image, id }) {
+export default function MailSellBlock({ id, prod, picture, chickenId }) {
+
     return (
         <View style={styles.container}>
             <View style={styles.containerId} >
                 <Text style={styles.containerIdText}>{id}</Text>
             </View>
             <Image
-                style={{ width: 168, height: 200, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
-                source={image}
+                style={{ width: 168, height: 230, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
+                source={{ uri: `https://api.richhens.com/${picture}` }}
             />
-
             <View style={styles.blockDiv}>
-                {data.map((res, index) => {
-                    return (
-                        <Image
-                            style={styles.blockDivImg}
-                            key={index}
-                            source={res.img}
-                        />
-                    )
-                })}
+                {
+                    [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
+                }
             </View>
-            <View
-                style={styles.progressParrent}>
-                <Text style={styles.progressText}>PRODUCTIVITY 8</Text>
+            <View style={styles.progressParrent}>
+                <Text style={styles.progressText}>PRODUCTIVITY {prod}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
                     {
-                        valTwo.map((item, index) => {
-                            return (
-                                <View key={index} style={[{ width: 10 + '%', backgroundColor: '#00E755', marginRight: 2 }, index === 0 ? styles.bordersRadius : styles.bordersNone]}></View>
-                            )
-                        })
+                        [...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
                     }
                 </View>
             </View>
@@ -57,6 +37,7 @@ export default function MailSellBlock({ image, id }) {
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
+                            onPress={() => navigation.navigate('RichScreenMarket')}
                             key={index}
                             style={styles.signUpButton} >
                             <Text style={styles.signUpText}>{res}</Text>

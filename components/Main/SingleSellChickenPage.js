@@ -60,38 +60,28 @@ export default function SingleSellChickenScreenComponent({ navigation, chickenId
                         quality={route.params.quality}
                         quantity={route.params.quantity}
                         picture={route.params.picture}
+                        navigation={navigation}
                     />
                 }
-                {prevRoute.name === 'RichScreenMarket' &&
+                {prevRoute.name === 'RichScreen' &&
                     <MailSellBlock
                         id={'#451790238'}
-                        // image={require('../../assets/images/chickenmail4.png')}
                         chickenId={route.params.chickenId}
-                        // chance={route.params.chance}
-                        // prod={route.params.prod}
-                        // quality={route.params.quality}
-                        // quantity={route.params.quantity}
                         picture={route.params.picture}
-                    />
-                }
-                {/* {prevRoute.name === 'RichScreenMarket' &&
-                    <MailSellBlock
-                        id={'#451790238'}
-                        image={require('../../assets/images/chickenmail4.png')}
-                        chickenId={route.params.chickenId}
-                        chance={route.params.chance}
                         prod={route.params.prod}
-                        quality={route.params.quality}
-                        quantity={route.params.quantity}
-                        picture={route.params.picture}
+                        navigation={navigation}
                     />
                 }
-                {prevRoute.name === 'OtherSellScreen' &&
+
+                {prevRoute.name === 'OtherScreen' &&
                     <OtherSellBlock
                         id={'#451790238'}
-                        image={require('../../assets/images/egg3.png')}
+                        chickenId={route.params.chickenId}
+                        picture={route.params.picture}
+                        navigation={navigation}
+                        eggName={route.params.eggName}
                     />
-                } */}
+                }
 
             </ImageBackground>
         </SafeAreaView>

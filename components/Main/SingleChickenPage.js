@@ -68,6 +68,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
                     <RichBlockScreenComponent
                         id={'#451790238'}
                         chickenId={chickenId}
+                        navigation={navigation}
                     />
                 }
                 {
@@ -101,6 +102,7 @@ export default function SingleChickenScreenComponent({ navigation }) {
                         id={'#451790238'}
                         image={require('../../assets/images/egg3.png')}
                         chickenId={chickenId}
+                        navigation={navigation}
                     />
                 }
                 {prevRoute.name === 'RichMarketBuyScreen' &&

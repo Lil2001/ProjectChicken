@@ -1,9 +1,17 @@
-import {  View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let buttonsData = ['BUY NOW']
+let buttonsData = ['SELL NOW']
 
-export default function OtherSellBlock({ id, image, navigation }) {
+export default function OtherSellBlock({ id, image, navigation, eggName, picture, }) {
+
+    async function sellNow() {
+        let id = chichenId
+        let userToken = await AsyncStorage.getItem('userToken');
+        let AuthStr = 'Bearer ' + userToken;
+        await fetch(`https://api.richhens.com/api/v1/market/sell`)
+    }
 
     return (
         <View style={styles.container}>
@@ -12,11 +20,11 @@ export default function OtherSellBlock({ id, image, navigation }) {
             </View>
             <Image
                 style={{ width: 158, height: 170, alignSelf: 'center', marginTop: 15, marginBottom: 10 }}
-                source={image}
+                source={{ uri: `https://api.richhens.com/${picture}` }}
             />
 
             <View style={styles.blockDiv}>
-                <Text>ECO EGG</Text>
+                <Text style={styles.textStyle}>{eggName}</Text>
             </View>
             <TextInput
                 keyboardType='numeric'
@@ -27,6 +35,7 @@ export default function OtherSellBlock({ id, image, navigation }) {
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
+                            onPress={() => navigation.navigate('OtherSellScreen')}
                             key={index}
                             style={styles.signUpButton} >
                             <Text style={styles.signUpText}>{res}</Text>
@@ -106,6 +115,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter_600SemiBold',
         color: '#333333',
     },
-
+    textStyle: {
+        fontSize: 14,
+        lineHeight: 17,
+        fontFamily: 'Inter_500Medium',
+        textTransform: 'uppercase',
+        color: '#333333'
+    }
 })
 

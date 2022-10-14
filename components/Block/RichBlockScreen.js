@@ -68,9 +68,7 @@ export default function RichBlockScreenComponent({ image, id, chickenId, navigat
             />
             <Text style={styles.text}>PREMIUM</Text>
             <View style={styles.blockDiv}>
-                {
-                    [...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)
-                }
+                {[...new Array(4)].map((x, i) => <Image style={styles.blockDivImg} key={i} source={require('../../assets/images/Frame22.png')} />)}
             </View>
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>HEALTH {rooster.health}%</Text>
@@ -81,9 +79,7 @@ export default function RichBlockScreenComponent({ image, id, chickenId, navigat
             <View style={styles.progressParrent}>
                 <Text style={styles.progressText}>PRODUCTIVITY {rooster.productivity}</Text>
                 <View style={[styles.progress, { flexDirection: 'row' }]}>
-                    {
-                        [...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)
-                    }
+                    {[...new Array(prod)].map((x, i) => <View key={i} style={[{ width: 9.3 + '%', backgroundColor: '#00E755', marginRight: 2 }, i === 0 ? styles.bordersRadius : styles.bordersNone, i === 9 ? styles.borderRadiusRight : styles.bordersNone]}></View>)}
                 </View>
             </View>
 

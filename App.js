@@ -156,7 +156,7 @@ export default function App() {
               headerShown: false,
             })}>
             <Stack.Screen name="RegisterScreen" component={RegisterScreenComponent} />
-            <Stack.Screen name="LoginScreen" component={LoginScreenComponent} />
+            {/* <Stack.Screen name="LoginScreen" component={LoginScreenComponent} /> */}
           </Stack.Navigator>
           )
           :

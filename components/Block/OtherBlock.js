@@ -5,8 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 let buttonsData = ['BREAK', 'SELL']
 
 export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
-    const [appState, setAppState] = useState({ loading: false, repos: null })
-    const [eggs, setEggs] = useState([])
+    const [appState, setAppState] = useState({ loading: false, repos: null });
+    const [eggs, setEggs] = useState([]);
+    const [picture, setPicture] = useState('');
+    const [eggName, setEggName] = useState('')
 
     async function getChickensData() {
         let userToken = await AsyncStorage.getItem('userToken');
@@ -20,13 +22,18 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
             },
         })
             .then(response => response.json())
-            .then(res => setEggs(res.data.egg))
+            .then(res => {
+                setEggs(res.data.egg);
+                setPicture(res.data.egg.picture)
+                setEggName(res.data.egg.type)
+            })
     }
 
     useEffect(() => {
         setAppState({ loading: true });
         getChickensData()
     }, [setAppState])
+
 
     return (
         <View style={styles.container}>
@@ -44,6 +51,11 @@ export default function OtherScreenBlock({ id, image, navigation, chickenId }) {
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
+                            onPress={() => {
+                                if (index === 1) {
+                                    navigation.navigate('SingleSellScreen', { picture, chickenId, eggName })
+                                }
+                            }}
                             key={index}
                             style={styles.signUpButton} >
                             <Text style={styles.signUpText}>{res}</Text>

@@ -2,10 +2,10 @@ import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'reac
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let buttonsData = ['Buy Now']
+let buttonsData = ['SELL Now']
 
 export default function FemSellBlock({ image, id, chickenId, quantity, chance, prod, quality, picture }) {
-    // console.log(chance, chickenId, quantity, quality, prod, 'sdfsd')
+
     const [price, setPrice] = useState('')
 
     async function sellChicken() {
@@ -81,6 +81,7 @@ export default function FemSellBlock({ image, id, chickenId, quantity, chance, p
                 {buttonsData.map((res, index) => {
                     return (
                         <TouchableOpacity
+                            onPress={() => navigation.navigate('MarketScreen')}
                             key={index}
                             style={styles.signUpButton} >
                             <Text style={styles.signUpText}>{res}</Text>
